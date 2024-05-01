@@ -15,9 +15,6 @@ public class Server {
             BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
             System.out.println("New connection accepted");
             final String name = in.readLine();
-            if (name.equals("quit")) {
-                return;
-            }
             out.println(String.format("Hi %s, your port is %d", name, clientSocket.getPort()));
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
