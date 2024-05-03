@@ -11,8 +11,11 @@ public class Client {
         try (Socket clientSocket = new Socket(host, port);
              PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
              BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()))) {
-            out.println("Hello World! / HTTP/1.1\n" + "Host: localhost\n\n\n");
+            out.println("quit\n" + "Host: localhost\n\n\n");
             String resp = in.readLine();
+            if(resp == null) {
+                return;
+            }
             System.out.println(resp);
         } catch (IOException ex) {
             ex.printStackTrace();
